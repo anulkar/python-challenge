@@ -13,15 +13,6 @@
 # The greatest increase in profits (date and amount) over the entire period
 # The greatest decrease in losses (date and amount) over the entire period
 
-# As an example, your analysis should look similar to the one below:
-  # Financial Analysis
-  # ----------------------------
-  # Total Months: 86
-  # Total: $38382578
-  # Average  Change: $-2315.12
-  # Greatest Increase in Profits: Feb-2012 ($1926159)
-  # Greatest Decrease in Profits: Sep-2013 ($-2196167)
-
 # Import the os module to create file paths across operating systems
 import os
 
@@ -69,14 +60,37 @@ with open(pybank_csv_path, newline = '') as pybank_csv_file:
             prev_month_pl = curr_month_pl
             pybank_dict[budget_data[0]] = monthly_pl_change
 
-avgPLChange = total_pl_change / (total_months - 1)
+pybank_csv_file.close()
 
-max_profit_increase = max(pybank_dict, key=pybank_dict.get)
-min_profit_increase = min(pybank_dict, key=pybank_dict.get)
+avg_pl_change = total_pl_change / (total_months - 1)
 
-print("\nPyBank Financial Analysis\n-----------------------------------------------------------------------")
-print(f"Total Months Analyzed: {total_months}")
-print(f"Net Total Profit/Losses over the {total_months} months: ${net_pl_amount:,}")
-print(f"Average of the changes in Profit/Losses over the {total_months} months: ${avgPLChange:.2f}")
-print(f"Greatest Increase in Profits over the {total_months} months: {max_profit_increase} (${max(pybank_dict.values()):,})")
-print(f"Greatest Decrease in Profits over the {total_months} months: {min_profit_increase} (${min(pybank_dict.values()):,})\n")
+max_profit_month = max(pybank_dict, key=pybank_dict.get)
+max_profit_increase = max(pybank_dict.values())
+
+min_profit_month = min(pybank_dict, key=pybank_dict.get)
+min_profit_increase = min(pybank_dict.values())
+
+pybank_analysis = []
+
+pybank_analysis.append("\nPyBank Financial Analysis\n-----------------------------------------------------------------------\n")
+pybank_analysis.append("Total Months Analyzed: " + str(total_months) + "\n")
+pybank_analysis.append("Net Total Profit/Losses over this period: ${:,}\n".format(net_pl_amount))
+pybank_analysis.append("Average of the changes in Profit/Losses over this period: ${:.2f}\n".format(avg_pl_change))
+pybank_analysis.append("Greatest Increase in Profits over this period: " + max_profit_month + " (${:,})\n".format(max_profit_increase))
+pybank_analysis.append("Greatest Decrease in Profits over this period: " + min_profit_month + " (${:,})\n".format(min_profit_increase))
+
+print(*pybank_analysis)
+
+#print("\nPyBank Financial Analysis\n-----------------------------------------------------------------------")
+#print(f"Total Months Analyzed: {total_months}")
+#print(f"Net Total Profit/Losses over the {total_months} months: ${net_pl_amount:,}")
+#print(f"Average of the changes in Profit/Losses over the {total_months} months: ${avgPLChange:.2f}")
+#print(f"Greatest Increase in Profits over the {total_months} months: {max_profit_increase} (${max(pybank_dict.values()):,})")
+#print(f"Greatest Decrease in Profits over the {total_months} months: {min_profit_increase} (${min(pybank_dict.values()):,})\n")
+
+output_file_path = os.path.join(os.getcwd(), 'pybank_output.txt')
+
+with open(output_file_path,'w') as pybank_output_file:
+    pybank_output_file.writelines(pybank_contents for pybank_contents in pybank_analysis)
+
+pybank_output_file.close()
