@@ -1,16 +1,20 @@
-# ==============================================================================
+# =============================================================================
 # PYTHON HOMEWORK - PYBANK FINANCIAL ANALYSIS
 # GT DATA SCIENCE BOOTCAMP
 # PROGRAMMED BY: ATUL NULKAR
 # Date: JANUARY 2020
+# =============================================================================
+# This is the Main Python script to run for the PyBank analysis.
+# It analyzes financial data provided in the "budget_data.csv" file.
+# Note that the csv file and the python script should be in the same folder.
+# The csv dataset is composed of two columns: "Date" and "Profit/Losses"
+# The script calculates the following stats:
+    # Total number of months included in the dataset
+    # The net total amount of "Profit/Losses" over the entire period
+    # The average of the changes in "Profit/Losses" over the entire period
+    # The greatest increase in profits (date and amount) over the entire period
+    # The greatest decrease in losses (date and amount) over the entire period
 # ==============================================================================
-
-# This is the Main Python script to run for the PyBank analysis
-# The total number of months included in the dataset
-# The net total amount of "Profit/Losses" over the entire period
-# The average of the changes in "Profit/Losses" over the entire period
-# The greatest increase in profits (date and amount) over the entire period
-# The greatest decrease in losses (date and amount) over the entire period
 
 # Import the os module to create file paths across operating systems
 import os
@@ -98,7 +102,7 @@ min_profit_increase = min(pybank_dict.values())
 # List will be used to print the results to terminal and export to a text file
 pybank_analysis = []
 
-# Add all of the analysis results to the list in the form of pretty output/lines
+# Add all of the analysis results to the list in the form of formatted output/lines
 pybank_analysis.append("\nPyBank Financial Analysis\n-----------------------------------------------------------------------\n")
 pybank_analysis.append("Total Months Analyzed: " + str(total_months) + "\n")
 pybank_analysis.append("Net Total Profit/Losses over this period: ${:,}\n".format(net_pl_amount))
