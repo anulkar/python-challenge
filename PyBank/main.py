@@ -31,7 +31,7 @@ with open(pybank_csv_path, newline = '') as pybank_csv_file:
     # CSV reader specifies delimiter and variable that holds the contents of the budget data file
     pybank_csv_reader = csv.reader(pybank_csv_file, delimiter = ',')
 
-    # Read the header row first
+    # Read and save the header row first
     pybank_csv_header = next(pybank_csv_reader)
 
     # Initialize variable to store the total number of months in the dataset
@@ -67,7 +67,7 @@ with open(pybank_csv_path, newline = '') as pybank_csv_file:
         # This maintains the cumulative total amount
         net_pl_amount += curr_month_pl
 
-        # This condition checks if we are reading the first non-header row of the file (i.e. the first month) 
+        # This condition checks if we are reading the first month's data in the csv 
         # If it's the first month then there is nothing to compute/compare against
         # For subsequent months the block computes and stores all the necessary stats            
         if total_months != 1:
