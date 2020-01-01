@@ -103,12 +103,14 @@ min_profit_increase = min(pybank_dict.values())
 pybank_analysis = []
 
 # Add all of the analysis results to the list in the form of formatted output/lines
-pybank_analysis.append("\nPyBank Financial Analysis\n-----------------------------------------------------------------------\n")
-pybank_analysis.append("Total Months Analyzed: " + str(total_months) + "\n")
-pybank_analysis.append("Net Total Profit/Losses over this period: ${:,}\n".format(net_pl_amount))
-pybank_analysis.append("Average of the changes in Profit/Losses over this period: ${:.2f}\n".format(avg_pl_change))
-pybank_analysis.append("Greatest Increase in Profits over this period: " + max_profit_month + " (${:,})\n".format(max_profit_increase))
-pybank_analysis.append("Greatest Decrease in Profits over this period: " + min_profit_month + " (${:,})\n".format(min_profit_increase))
+pybank_analysis.append("\nPYBANK FINANCIAL ANALYSIS")
+pybank_analysis.append("\n" + "-" * 60)
+pybank_analysis.append("\nTotal Months Analyzed: " + str(total_months))
+pybank_analysis.append("\nNet Total Profit/Losses: ${:,}".format(net_pl_amount))
+pybank_analysis.append("\nAverage of the changes in Profit/Losses: ${:.2f}".format(avg_pl_change))
+pybank_analysis.append("\nGreatest Increase in Profits: " + max_profit_month + " (${:,})".format(max_profit_increase))
+pybank_analysis.append("\nGreatest Decrease in Profits: " + min_profit_month + " (${:,})".format(min_profit_increase))
+pybank_analysis.append("\n" + "-" * 60 + "\n")
 
 # Print the contents of the list to the terminal
 print(*pybank_analysis)
