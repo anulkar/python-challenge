@@ -49,25 +49,51 @@ with open(pypoll_csv_path, newline = '') as pypoll_csv_file:
 
         # Store the Voter ID as a key in the dictionary, and the Candidate name as the corresponding value 
         pypoll_dict[voting_data[0]] = voting_data[2]
-        #if total_votes == 50:
-         #   break
 
-print("Total Votes: {:,}".format(total_votes))
+# Close the csv file after we are done reading and analyzing it
+pypoll_csv_file.close()
 
 candidates = set(pypoll_dict.values())
 
-votes_won_by_candidate = 0
-
 pypoll_results = {}
 
+pypoll_analysis = []
+
+pypoll_analysis.append("\nELECTION RESULTS")
+pypoll_analysis.append("\n" + "-" * 30)
+pypoll_analysis.append("\nTotal Votes: {:,}".format(total_votes))
+pypoll_analysis.append("\n" + "-" * 30)
+
 for candidate in candidates:
-    votes_won_by_candidate = sum(x == candidate for x in pypoll_dict.values())
-    pypoll_results[candidate] = votes_won_by_candidate
+    votes_won = sum(x == candidate for x in pypoll_dict.values())
+    pypoll_results[candidate] = votes_won
 
 from collections import OrderedDict
 pypoll_results_sorted = OrderedDict(sorted(pypoll_results.items(), key=lambda x: x[1], reverse=True))
 
+for candidate,votes_won in pypoll_results_sorted.items():
+    percent_votes_won = votes_won / total_votes
+    pypoll_analysis.append("\n" + candidate + ": " + "{:.3%}".format(percent_votes_won) + " ({:,})".format(votes_won))
 
+pypoll_analysis.append("\n" + "-" * 30)
 
-percent_votes_won = votes_won_by_candidate / total_votes
-#print(candidate + ": " + "{:.3%}".format(percent_votes_won) + " ({:,})".format(votes_won_by_candidate))
+# Compute the greatest increase in profits from the dictionary (month and amount) 
+winning_candidate = max(pypoll_results_sorted, key=pypoll_results_sorted.get)
+
+pypoll_analysis.append("\nWINNER: " + winning_candidate)
+pypoll_analysis.append("\n" + "-" * 30 + "\n")
+
+# Print the contents of the list to the terminal
+print(*pypoll_analysis)
+
+# Create the file path for the output file that we want to export the results to
+output_file_path = os.path.join(os.getcwd(), 'pypoll_output.txt')
+
+# Open the output text file for writing
+with open(output_file_path,'w') as pypoll_output_file:
+
+    # Use list comprehension to write the contents of the list to the output file
+    pypoll_output_file.writelines(pypoll_contents for pypoll_contents in pypoll_analysis)
+
+# Close the text file once done writing to it
+pypoll_output_file.close()
