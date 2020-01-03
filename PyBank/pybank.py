@@ -107,7 +107,7 @@ if __name__ != "__main__":
         return(pybank_results)
 
     # =============================================================================================
-    # The print_to_terminal function takes the financial results and prints the output to terminal
+    # The print_to_terminal function takes the financial results and prints a summary to terminal
     # =============================================================================================
     def print_to_terminal(pybank_results):
         
@@ -131,11 +131,11 @@ if __name__ != "__main__":
         return pybank_analysis
 
     # =======================================================================================
-    # The export_to_txtfile function exports the printed analysis of results to a text file
+    # The export_to_txtfile function exports the printed financial analysis to a text file
     # =======================================================================================
     def export_to_txtfile(output_txt_file, pybank_analysis):
         # Create the file path for the output file that we want to export the results to
-        output_file_path = os.path.join(os.getcwd(), 'pybank_output.txt')
+        output_file_path = os.path.join(os.getcwd(), output_txt_file)
 
         # Open the output text file for writing
         with open(output_file_path,'w') as pybank_output_file:
