@@ -1,8 +1,10 @@
 
-PyBank Financial Analysis
------------------------------------------------------------------------
+PYBANK FINANCIAL ANALYSIS SUMMARY
+------------------------------------------------------------
+CSV File Analyzed: /Users/nulkars/Documents/GT Data Science Boot Camp/git/python-challenge/PyBank/budget_data.csv
 Total Months Analyzed: 86
-Net Total Profit/Losses over this period: $38,382,578
-Average of the changes in Profit/Losses over this period: $-2315.12
-Greatest Increase in Profits over this period: Feb-2012 ($1,926,159)
-Greatest Decrease in Profits over this period: Sep-2013 ($-2,196,167)
+Net Total Profit/Losses: $38,382,578
+Average of the changes in Profit/Losses: $-2315.12
+Greatest Increase in Profits: Feb-2012 ($1,926,159)
+Greatest Decrease in Profits: Sep-2013 ($-2,196,167)
+------------------------------------------------------------
