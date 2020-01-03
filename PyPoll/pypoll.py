@@ -34,7 +34,7 @@ if __name__ != "__main__":
             print(f"\nAnalyzing the Election Data File: {pypoll_csv_path}")
             print("\nStay tuned for the results...")
             
-            # CSV reader specifies delimiter and variable that holds the contents of the budget data file
+            # CSV reader specifies delimiter and variable that holds the contents of the election data file
             pypoll_csv_reader = csv.reader(pypoll_csv_file, delimiter = ',')
 
             # Read the header row first
