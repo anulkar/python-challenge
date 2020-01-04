@@ -48,28 +48,45 @@ if __name__ != "__main__":
 
         words = []
         sentences = []
+        words_in_sentence = []
         word_count = 0
         sentence_count = 0
+        letter_count = 0
+        avg_letter_count = 0
+        words_per_sentence = 0
+        avg_sentence_length = 0
 
         for each_line in stripped_para:
             # Split each line into a list of words
             if each_line != '':
-                print("\nOriginal Line: " + each_line)
+                # print("\nOriginal Line: " + each_line)
                 words = each_line.split()
                 # Count the number of words and increment counter each time
-                print("\nWords:  " + str(words))  
+                # print("\nWords:  " + str(words))  
                 word_count += len(words)
+                
+                for word in words:
+                    letter_count += len(word)
+
                 # Split each line into a list of sentences
                 sentences = re.split("(?<=[.!?]) +", each_line)
-                print("\nSentence List: " + str(sentences))
+                # print("\nSentence List: " + str(sentences))
                 # Remove any empty/null strings from sentences
                 sentences = list(filter(None, sentences))
-                print("\nSentence Cleaned: " + str(sentences))
+                # print("\nSentence Cleaned: " + str(sentences))
                 # Count the number of sentences and increment counter each time
                 sentence_count += len(sentences)
-                print("\nSentence Count: " + str(sentence_count))
-                
-        pypara_metrics = [pypara_text_path, word_count, sentence_count]
+                # print("\nSentence Count: " + str(sentence_count))
+
+                for sentence in sentences:
+                    words_in_sentence = sentence.split()
+                    words_per_sentence += len(words_in_sentence)
+                    # print("\nWords Per Sentence: " + str(words_per_sentence))
+
+        avg_letter_count = letter_count / word_count
+        avg_sentence_length = words_per_sentence / sentence_count
+
+        pypara_metrics = [pypara_text_path, word_count, sentence_count, avg_letter_count, avg_sentence_length]
 
         return pypara_metrics
 
@@ -85,8 +102,8 @@ if __name__ != "__main__":
         pypara_analysis.append("\nText File Analyzed: " + pypara_metrics[0])
         pypara_analysis.append("\nApproximate Word Count: " + str(pypara_metrics[1]))
         pypara_analysis.append("\nApproximate Sentence Count: " + str(pypara_metrics[2]))
-        #pypara_analysis.append("\nAverage Letter Count: " + str(pypara_metrics[2]))
-        #pypara_analysis.append("\nAverage Sentence Length: " + str(pypara_metrics[3])) 
+        pypara_analysis.append("\nAverage Letter Count: " + str(round(pypara_metrics[3], 1)))
+        pypara_analysis.append("\nAverage Sentence Length: " + str(round(pypara_metrics[4], 1))) 
         pypara_analysis.append("\n" + "-" * 30 + "\n")
 
         print (*pypara_analysis)
