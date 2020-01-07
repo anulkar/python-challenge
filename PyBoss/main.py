@@ -1,11 +1,11 @@
-# =================================================================
+# ================================================================
 # PYTHON HOMEWORK - PYBOSS EMPLOYEE DATA CLEANUP
 # GT DATA SCIENCE BOOTCAMP
 # PROGRAMMED BY: ATUL NULKAR
 # Date: JANUARY 2020
-# =================================================================
+# ================================================================
 # This is the Main Python script to run for the PyBoss analysis.
-# =================================================================
+# ================================================================
 
 # Import the pyboss module
 # Module contains functions to:

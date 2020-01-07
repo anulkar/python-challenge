@@ -20,10 +20,10 @@ if __name__ != "__main__":
 
     # ========================================================================================================
     # The convert_employee_records function reads the employee data csv file and converts the data as follows:
-    # a) The 'Name' column is split into separate 'First Name' and 'Last Name' columns.
-    # b) The 'DOB' data is re-written into MM/DD/YYYY format.
-    # c) The 'SSN' data is re-written such that the first five numbers are hidden from view.
-    # d) The 'State' data is re-written as simple two-letter abbreviations.
+    # 1) The 'Name' column is split into separate 'First Name' and 'Last Name' columns.
+    # 2) The 'DOB' data is re-written into MM/DD/YYYY format.
+    # 3) The 'SSN' data is re-written such that the first five numbers are hidden from view.
+    # 4) The 'State' data is re-written as simple two-letter abbreviations.
     # ========================================================================================================
     def convert_employee_records(csv_file_name):
 
