@@ -1,11 +1,11 @@
-# ==============================================================
+# ===============================================================
 # PYTHON HOMEWORK - PYPOLL ELECTION RESULTS
 # GT DATA SCIENCE BOOTCAMP
 # PROGRAMMED BY: ATUL NULKAR
 # Date: JANUARY 2020
-# ==============================================================
+# ===============================================================
 # This is the Main Python script to run for the PyPoll analysis.
-# ==============================================================
+# ===============================================================
 
 # Import the pypoll module
 # Module contains functions to analyze the election data and print+export the voting results to file

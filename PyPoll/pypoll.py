@@ -20,9 +20,9 @@ if __name__ != "__main__":
 
     # =======================================================================
     # The analyze_votes function calculates the following election results:
-    # a) Total number of votes cast
-    # b) A complete list of candidates who received votes
-    # c) The winner of the election based on popular vote
+    # 1) Total number of votes cast
+    # 2) A complete list of candidates who received votes
+    # 3) The winner of the election based on popular vote
     # =======================================================================
     def analyze_votes(csv_file_name):
         # Create the file path for the election_data.csv file
@@ -86,8 +86,8 @@ if __name__ != "__main__":
 
     # =============================================================================================
     # The print_to_terminal function takes the election results and:
-    #  a) Determines the percentage of votes each candidate won
-    #  b) Prints a summary of all the election results to terminal
+    #  1) Determines the percentage of votes each candidate won
+    #  2) Prints a summary of all the election results to terminal
     # =============================================================================================
     def print_to_terminal(pypoll_results_sorted, total_votes, winning_candidate):
 
