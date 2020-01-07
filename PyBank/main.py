@@ -1,11 +1,11 @@
-# =================================================================
+# ================================================================
 # PYTHON HOMEWORK - PYBANK FINANCIAL ANALYSIS
 # GT DATA SCIENCE BOOTCAMP
 # PROGRAMMED BY: ATUL NULKAR
 # Date: JANUARY 2020
-# =================================================================
+# ================================================================
 # This is the Main Python script to run for the PyBank analysis.
-# =================================================================
+# ================================================================
 
 # Import the pybank module
 # Module contains functions to analyze the bank data and print+export the results to file

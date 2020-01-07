@@ -20,11 +20,11 @@ if __name__ != "__main__":
 
     # ===============================================================================================
     # The analyze_finances function reads a csv file, and calculates and returns the following stats:
-        # Total number of months included in the dataset
-        # The net total amount of "Profit/Losses" over the entire period
-        # The average of the changes in "Profit/Losses" over the entire period
-        # The greatest increase in profits (date and amount) over the entire period
-        # The greatest decrease in losses (date and amount) over the entire period
+    # 1) Total number of months included in the dataset
+    # 2) The net total amount of "Profit/Losses" over the entire period
+    # 3) The average of the changes in "Profit/Losses" over the entire period
+    # 4) The greatest increase in profits (date and amount) over the entire period
+    # 5) The greatest decrease in losses (date and amount) over the entire period
     # ===============================================================================================
     def analyze_finances(csv_file_name):
 
