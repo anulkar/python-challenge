@@ -13,12 +13,12 @@
 # 2) Generate simple metrics
 import pyparagraph
 
-# Loop 3 times to assess the three text files we have already prepared 
+# Loop 3 times to assess the three text files we have already prepared
 for file_num in range(3):
 
     # Sets the txt file that you want the script to read
     input_txt_file = "paragraph_" + str(file_num + 1) + ".txt"
-    # Call function to process the csv file and convert the employee records
+    # Call function to analyze the passage in the text file and save the metrics to a list
     pypara_metrics = pyparagraph.analyze_passages(input_txt_file)
-    # Call function to print the metrics to terminal
+    # Call function to print the list of metrics to terminal
     pyparagraph.print_metrics(pypara_metrics, input_txt_file)

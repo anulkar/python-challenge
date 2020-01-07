@@ -17,13 +17,13 @@ if __name__ != "__main__":
     # Import the regular expressions module
     import re
 
-    # ========================================================================================================
+    # ===================================================================================================
     # The analyze_passages function reads a text file and asseses it for each of the following metrics:
     # 1) Approximate word count
     # 2) Approximate sentence count
     # 3) Approximate letter count (per word)
     # 4) Average sentence length (in words)
-    # ========================================================================================================
+    # ===================================================================================================
     def analyze_passages(text_file_name):
 
         # Create file path for the text file to be assessed
@@ -35,20 +35,23 @@ if __name__ != "__main__":
             # Read all the lines from the text file
             pypara_text = pypara_text_file.readlines()
 
-            # List of sentences with newline character stripped out 
+            # Initalize list of sentences that will have the newline character stripped out 
             stripped_para = []
 
             # Parse each line of text
             for each_line in pypara_text:
-                 # Strip unnecessaru characters out and save each line to a new list
+                 # Strip newline character from each line of text and save to list
                 stripped_para.append(each_line.strip("\n")) 
 
         # Close the text file after we are done reading and analyzing it
         pypara_text_file.close()
 
+        # Initialize lists to store all words, sentences and words within each sentence 
         words = []
         sentences = []
         words_in_sentence = []
+
+        # Initialize counters for the passage analysis metrics 
         word_count = 0
         sentence_count = 0
         letter_count = 0
@@ -56,38 +59,39 @@ if __name__ != "__main__":
         words_per_sentence = 0
         avg_sentence_length = 0
 
+        # Parse each line of text that had the newline stripped out
         for each_line in stripped_para:
             # Split each line into a list of words
             if each_line != '':
-                # print("\nOriginal Line: " + each_line)
                 words = each_line.split()
                 # Count the number of words and increment counter each time
-                # print("\nWords:  " + str(words))  
                 word_count += len(words)
-                
+                # Iterate through each word in the words list
                 for word in words:
+                    # Calculate the letter count based on length of each word
                     letter_count += len(word)
-
-                # Split each line into a list of sentences
+                # Split each line into a list of sentences using a regular expression
                 sentences = re.split("(?<=[.!?]) +", each_line)
-                # print("\nSentence List: " + str(sentences))
                 # Remove any empty/null strings from sentences
                 sentences = list(filter(None, sentences))
-                # print("\nSentence Cleaned: " + str(sentences))
                 # Count the number of sentences and increment counter each time
                 sentence_count += len(sentences)
-                # print("\nSentence Count: " + str(sentence_count))
-
+                # Iterate through each sentence
                 for sentence in sentences:
+                    # Split each sentence into a list of words
                     words_in_sentence = sentence.split()
+                    # Calculate words per sentence
                     words_per_sentence += len(words_in_sentence)
-                    # print("\nWords Per Sentence: " + str(words_per_sentence))
 
+        # Calculate average letter count
         avg_letter_count = letter_count / word_count
+        # Calculate average length of sentence
         avg_sentence_length = words_per_sentence / sentence_count
 
+        # Store all the calculated metrics into a list for printing later
         pypara_metrics = [pypara_text_path, word_count, sentence_count, avg_letter_count, avg_sentence_length]
 
+        # Return list of metrics to calling function
         return pypara_metrics
 
     # ====================================================================
@@ -95,8 +99,10 @@ if __name__ != "__main__":
     # ====================================================================
     def print_metrics(pypara_metrics, text_file_name):
         
+        # Initialize empty list
         pypara_analysis = []
 
+        # Add all of the metrics that were analyzed to the list for printing with formatted output
         pypara_analysis.append("\nPARAGRAPH ANALYSIS")
         pypara_analysis.append("\n" + "-" * 30)
         pypara_analysis.append("\nText File Analyzed: " + pypara_metrics[0])
@@ -106,6 +112,7 @@ if __name__ != "__main__":
         pypara_analysis.append("\nAverage Sentence Length: " + str(round(pypara_metrics[4], 1))) 
         pypara_analysis.append("\n" + "-" * 30 + "\n")
 
+        # Print list to terminal
         print (*pypara_analysis)
         
 else:
